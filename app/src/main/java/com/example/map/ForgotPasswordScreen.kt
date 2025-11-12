@@ -87,8 +87,9 @@ fun ForgotPass(navController: NavController?) {
             TextField(
                 value = emailText,
                 onValueChange = { emailText = it },
-                colors = TextFieldDefaults.textFieldColors(
-                    containerColor = Color.White,
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White,
                     unfocusedIndicatorColor = colorResource(id = R.color.red_200)
                 ),
                 modifier = Modifier

@@ -1,0 +1,120 @@
+[versions]
+# Plugins
+androidGradlePlugin = "8.13.1"
+kotlin = "2.2.21"
+composeCompilerPlugin = "2.2.21"
+mapsSecretsPlugin = "2.0.1"
+
+# Compose
+composeBom = "2025.11.00"
+composeActivity = "1.11.0"
+composeNavigation = "2.9.6"
+
+# AndroidX Core
+androidxCore = "1.17.0"
+androidxLifecycle = "2.9.4"
+androidxAppcompat = "1.7.1"
+
+# Google & Maps
+googleMapsCompose = "6.12.1"
+googlePlayServicesMaps = "19.2.0"
+googleMaterial = "1.13.0"
+
+# Network
+retrofit = "2.11.0"
+gson = "2.12.1"
+okhttpLogging = "4.12.0"
+volley = "1.2.1"
+
+# Google Accompanist
+accompanistInsets = "0.30.1"
+accompanistSystemui = "0.36.0"
+accompanistPermissions = "0.37.3"
+
+# Material Design
+material3 = "1.4.0"
+
+# Constraint Layout
+constraintlayout = "2.2.1"
+
+# Testing
+junit = "4.13.2"
+androidxTestExtJunit = "1.3.0"
+espressoCore = "3.7.0"
+
+[libraries]
+# AndroidX Core
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppcompat" }
+
+# Compose
+compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+compose-material3 = { group = "androidx.compose.material3", name = "material3", version.ref = "material3" }
+compose-activity = { group = "androidx.activity", name = "activity-compose", version.ref = "composeActivity" }
+
+# Navigation
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "composeNavigation" }
+
+# Google & Maps
+google-maps-compose = { group = "com.google.maps.android", name = "maps-compose", version.ref = "googleMapsCompose" }
+google-play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "googlePlayServicesMaps" }
+google-material = { group = "com.google.android.material", name = "material", version.ref = "googleMaterial" }
+
+# Network
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttpLogging" }
+volley = { group = "com.android.volley", name = "volley", version.ref = "volley" }
+
+# Google Accompanist
+accompanist-insets = { group = "com.google.accompanist", name = "accompanist-insets", version.ref = "accompanistInsets" }
+accompanist-systemuicontroller = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanistSystemui" }
+accompanist-permissions = { group = "com.google.accompanist", name = "accompanist-permissions", version.ref = "accompanistPermissions" }
+
+# UI
+constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
+# Testing
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidxTestExtJunit" }
+espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "composeCompilerPlugin" }
+maps-secrets = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "mapsSecretsPlugin" }
+
+[bundles]
+compose = [
+    "compose-ui",
+    "compose-ui-tooling-preview",
+    "compose-material3",
+    "compose-activity"
+]
+
+retrofit = [
+    "retrofit",
+    "retrofit-converter-gson",
+    "gson",
+    "okhttp-logging-interceptor"
+]
+
+accompanist = [
+    "accompanist-insets",
+    "accompanist-systemuicontroller",
+    "accompanist-permissions"
+]
+debug = [
+    "compose-ui-tooling",
+    "compose-ui-test-manifest"
+]

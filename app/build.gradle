@@ -1,16 +1,17 @@
 plugins {
-    id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
     namespace 'com.example.map'
-    compileSdk 33
+    compileSdk 36
 
     defaultConfig {
         applicationId "com.example.map"
         minSdk 24
-        targetSdk 33
+        targetSdk 36
         versionCode 1
         versionName "1.0"
 
@@ -27,17 +28,14 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = '11'
     }
     buildFeatures {
         compose true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion '1.4.4'
     }
     packagingOptions {
         resources {
@@ -47,44 +45,43 @@ android {
 }
 
 dependencies {
-    //navigation
-    implementation "androidx.navigation:navigation-compose:2.5.3"
-    implementation 'com.android.volley:volley:1.2.1'
+    // Compose BOM - ensures all compose libraries use compatible versions
+    implementation platform(libs.compose.bom)
+    androidTestImplementation platform(libs.compose.bom)
 
-    //insets..
-    implementation "com.google.accompanist:accompanist-insets:0.22.0-rc"
+    // Navigation
+    implementation libs.navigation.compose
+    implementation libs.volley
 
-    //system ui controller
-    implementation "com.google.accompanist:accompanist-systemuicontroller:0.27.0"
+    // Google Accompanist bundle
+    implementation libs.bundles.accompanist
 
-    
-    //for map
-    implementation 'com.google.maps.android:maps-compose:2.11.4'
-    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    // Google Maps
+    implementation libs.google.maps.compose
+    implementation libs.google.play.services.maps
 
-    //retrofit...
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.code.gson:gson:2.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
+    // Network bundle
+    implementation libs.bundles.retrofit
+    implementation libs.androidx.lifecycle.viewmodel.ktx
 
-    //permission support
-    implementation 'com.google.accompanist:accompanist-permissions:0.24.13-rc'
+    // AndroidX Core
+    implementation libs.androidx.core.ktx
+    implementation libs.androidx.lifecycle.runtime.ktx
 
-    implementation 'androidx.core:core-ktx:1.10.0'
-    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
-    implementation 'androidx.activity:activity-compose:1.7.0'
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation 'androidx.compose.material3:material3:1.0.0-alpha11'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-test-manifest:$compose_version"
+    // Compose bundle
+    implementation libs.bundles.compose
+
+    // Additional UI
+    implementation libs.androidx.appcompat
+    implementation libs.google.material
+    implementation libs.constraintlayout
+
+    // Testing
+    testImplementation libs.junit
+    androidTestImplementation libs.androidx.test.ext.junit
+    androidTestImplementation libs.espresso.core
+    androidTestImplementation libs.compose.ui.test.junit4
+
+    // Debug
+    debugImplementation libs.bundles.debug
 }

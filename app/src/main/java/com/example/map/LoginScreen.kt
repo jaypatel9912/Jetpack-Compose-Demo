@@ -11,7 +11,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -91,8 +90,9 @@ fun Login(navController: NavController) {
         TextField(
             value = usernameText,
             onValueChange = { usernameText = it },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.White,
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
                 unfocusedIndicatorColor = colorResource(id = R.color.red_200)
             ),
             modifier = Modifier
@@ -118,11 +118,12 @@ fun Login(navController: NavController) {
         TextField(
             value = passwordText,
             onValueChange = { passwordText = it },
-            colors = TextFieldDefaults.textFieldColors(
-                containerColor = Color.White,
-                focusedIndicatorColor = colorResource(
+            colors = TextFieldDefaults.colors(
+                focusedContainerColor = colorResource(
                     id = R.color.red_200
                 ),
+                errorContainerColor =Color.White,
+                unfocusedContainerColor = Color.White,
                 unfocusedIndicatorColor = colorResource(id = R.color.red_200)
             ),
             modifier = Modifier
@@ -161,14 +162,12 @@ fun Login(navController: NavController) {
                 .fillMaxWidth(),
             contentAlignment = Alignment.CenterEnd
         ) {
-            ClickableText(
-                text = AnnotatedString(text = "Forgot password ?"),
-                style = TextStyle(
-                    color = Color.Gray,
-                    fontSize = 14.sp,
-                    fontFamily = FontFamily.SansSerif
-                ),
-                onClick = {
+            Text(
+                text = "Forgot password ?",
+                color = Color.Gray,
+                fontSize = 14.sp,
+                fontFamily = FontFamily.SansSerif,
+                modifier = Modifier.clickable {
                     navController.navigate("forgot_password_screen")
                 }
             )
